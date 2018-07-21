@@ -23,18 +23,18 @@ def scrape():
     chrome_options.add_argument('--no-sandbox')
 
     chrome_options.binary_location = GOOGLE_CHROME_BIN
-    driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=chrome_options)
 
-
-    driver.get("https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars/")
-    driver.execute_script('document.getElementById("full_image").click();')
-    html = driver.page_source
-    soup = BeautifulSoup(html, "html.parser")
-    a_ = soup.find('img', class_='fancybox-image')['src']
-    x_ = 'https://www.jpl.nasa.gov'
-    p_ = x_+a_
-    mars_mission["featured_image"] = p_
-    driver.close()
+    with webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=chrome_options) as driver:
+    # driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=chrome_options)
+        driver.get("https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars/")
+        driver.execute_script('document.getElementById("full_image").click();')
+        html = driver.page_source
+        soup = BeautifulSoup(html, "html.parser")
+        a_ = soup.find('img', class_='fancybox-image')['src']
+        x_ = 'https://www.jpl.nasa.gov'
+        p_ = x_+a_
+        mars_mission["featured_image"] = p_
+    # driver.close()
 
 
 
