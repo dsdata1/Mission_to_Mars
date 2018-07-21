@@ -1,10 +1,11 @@
 from flask import Flask, render_template, jsonify, redirect
 from flask_pymongo import PyMongo
 import scrape_m
-
+import config
+from boto.s3.connection import S3Connection
 
 app = Flask(__name__)
-app.config["MONGO_URI"] = "mongodb://localhost:27017/myDatabase"
+app.config["MONGO_URI"] = process.env.MONGOLAB_URI
 mongo = PyMongo(app)
 
 
