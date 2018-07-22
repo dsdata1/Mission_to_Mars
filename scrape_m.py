@@ -35,7 +35,8 @@ def scrape():
         driver.get("https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars/")
 
         #setting time out on page load
-        driver.set_page_load_timeout(20)
+        # driver.set_page_load_timeout(20)
+        driver.implicitly_wait(20)
         # time.sleep(3)
         driver.execute_script('document.getElementById("full_image").click();')
         html = driver.page_source
