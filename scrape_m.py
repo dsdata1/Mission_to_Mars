@@ -3,16 +3,17 @@ import pandas as pd
 from splinter import Browser
 from bs4 import BeautifulSoup
 import time
+
+
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
 
-
+#working
 def scrape():
-
     mars_mission = {}
 
-    #using chrome and chrome driver from heroku
+
     GOOGLE_CHROME_BIN = "/app/.apt/usr/bin/google-chrome"
     CHROMEDRIVER_PATH = "/app/.chromedriver/bin/chromedriver"
 
@@ -37,6 +38,7 @@ def scrape():
     # driver.close()
 
 
+
     url = 'https://mars.nasa.gov/news/'
 
     # Retrieve page with the requests module
@@ -45,7 +47,6 @@ def scrape():
     soup = BeautifulSoup(response.text, 'html.parser')
     mars_mission["news"] = soup.find('div', class_="content_title").text.strip()
     mars_mission["news_description"] = soup.find('div', class_="image_and_description_container").text.strip()
-    
 
 
 

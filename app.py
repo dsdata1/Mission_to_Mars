@@ -1,7 +1,6 @@
 from flask import Flask, render_template, jsonify, redirect
 from flask_pymongo import PyMongo
 import scrape_m
-
 import os
 
 
@@ -17,10 +16,7 @@ def index():
     mars = mongo.db.mars.find_one()
     return render_template('index.html', mars_mission=mars)
 
-
-
-
-#working version
+#testing
 @app.route('/scrape')
 def scrape():
     mars = mongo.db.mars
