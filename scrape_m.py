@@ -27,6 +27,7 @@ def scrape():
     with webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=chrome_options) as driver:
     # driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=chrome_options)
         driver.get("https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars/")
+        time.sleep(2)
         driver.execute_script('document.getElementById("full_image").click();')
         html = driver.page_source
         soup = BeautifulSoup(html, "html.parser")
