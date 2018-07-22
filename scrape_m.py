@@ -36,7 +36,7 @@ def scrape():
 
         #setting time out on page load
         # driver.set_page_load_timeout(20)
-        driver.implicitly_wait(20)
+        driver.implicitly_wait(25)
         # time.sleep(3)
         driver.execute_script('document.getElementById("full_image").click();')
         html = driver.page_source
@@ -53,6 +53,7 @@ def scrape():
 
     # Retrieve page with the requests module
     response = requests.get(url)
+    time.sleep(1)
     # Create BeautifulSoup object; parse with 'html.parser'
     soup = BeautifulSoup(response.text, 'html.parser')
     mars_mission["news"] = soup.find('div', class_="content_title").text.strip()
@@ -65,6 +66,7 @@ def scrape():
 
     # Retrieve page with the requests module
     response = requests.get(url)
+    time.sleep(1)
     # Create BeautifulSoup object; parse with 'html.parser'
     soup = BeautifulSoup(response.text, 'html.parser')
 
@@ -77,6 +79,7 @@ def scrape():
 
     # Retrieve page with the requests module
     response = requests.get(url)
+    time.sleep(1)
     # Create BeautifulSoup object; parse with 'html.parser'
     soup = BeautifulSoup(response.text, 'html.parser')
 
