@@ -30,15 +30,19 @@ def scrape():
     chrome_options.binary_location = GOOGLE_CHROME_BIN
 
     with webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=chrome_options) as driver:
-        time.sleep(2)
+        # time.sleep(2)
+        #only need to do implicit wait when creating driver
+        driver.implicitly_wait(20)
     # driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=chrome_options)
         driver.get("https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars/")
 
         #setting time out on page load
-        # driver.set_page_load_timeout(20)
-        driver.implicitly_wait(25)
+        driver.set_page_load_timeout(10)
+               
         # time.sleep(3)
         driver.execute_script('document.getElementById("full_image").click();')
+        driver.set_page_load_timeout(10)
+        
         html = driver.page_source
         soup = BeautifulSoup(html, "html.parser")
         a_ = soup.find('img', class_='fancybox-image')['src']
