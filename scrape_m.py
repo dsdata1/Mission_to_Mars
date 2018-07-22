@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup
 import time
 
 
+<<<<<<< HEAD
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
@@ -39,6 +40,12 @@ def scrape():
 
 
 
+=======
+
+def scrape():
+    mars_mission = {}
+
+>>>>>>> 9e07c6fe8005fed35c98b96631b54c98f5d1b6e3
     url = 'https://mars.nasa.gov/news/'
 
     # Retrieve page with the requests module
@@ -50,6 +57,32 @@ def scrape():
 
 
 
+<<<<<<< HEAD
+=======
+    with Browser() as browser:
+    # Visit URL
+        url = "https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars/"
+        browser.visit(url)
+        time.sleep(3)
+        
+        html = browser.html
+        
+        button = browser.find_by_id('full_image')
+        button.click()
+        time.sleep(3)
+        
+        html = browser.html
+        time.sleep(3)
+        soup = BeautifulSoup(html, "html.parser")
+    
+    a_ = soup.find('img', class_='fancybox-image')['src']
+    x_ = 'https://www.jpl.nasa.gov'
+    p_ = x_+a_
+    mars_mission["featured_image"] = p_
+
+
+
+>>>>>>> 9e07c6fe8005fed35c98b96631b54c98f5d1b6e3
 
     url = 'https://twitter.com/marswxreport?lang=en'
 
