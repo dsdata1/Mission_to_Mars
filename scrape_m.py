@@ -3,14 +3,11 @@ import pandas as pd
 from splinter import Browser
 from bs4 import BeautifulSoup
 import time
-
-
-<<<<<<< HEAD
 from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
 
-#test
+#working version
 def scrape():
     mars_mission = {}
 
@@ -40,12 +37,10 @@ def scrape():
 
 
 
-=======
 
 def scrape():
     mars_mission = {}
 
->>>>>>> 9e07c6fe8005fed35c98b96631b54c98f5d1b6e3
     url = 'https://mars.nasa.gov/news/'
 
     # Retrieve page with the requests module
@@ -57,8 +52,7 @@ def scrape():
 
 
 
-<<<<<<< HEAD
-=======
+
     with Browser() as browser:
     # Visit URL
         url = "https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars/"
@@ -82,7 +76,6 @@ def scrape():
 
 
 
->>>>>>> 9e07c6fe8005fed35c98b96631b54c98f5d1b6e3
 
     url = 'https://twitter.com/marswxreport?lang=en'
 
