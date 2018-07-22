@@ -25,6 +25,7 @@ def scrape():
     chrome_options.binary_location = GOOGLE_CHROME_BIN
 
     with webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=chrome_options) as driver:
+        time.sleep(1)
     # driver = webdriver.Chrome(executable_path=CHROMEDRIVER_PATH, chrome_options=chrome_options)
         driver.get("https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars/")
         time.sleep(3)
