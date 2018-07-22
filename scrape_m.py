@@ -7,11 +7,12 @@ from selenium import webdriver
 from selenium.webdriver.chrome.options import Options
 
 
-#working version
+
 def scrape():
+
     mars_mission = {}
 
-
+    #using chrome and chrome driver from heroku
     GOOGLE_CHROME_BIN = "/app/.apt/usr/bin/google-chrome"
     CHROMEDRIVER_PATH = "/app/.chromedriver/bin/chromedriver"
 
@@ -36,11 +37,6 @@ def scrape():
     # driver.close()
 
 
-
-
-def scrape():
-    mars_mission = {}
-
     url = 'https://mars.nasa.gov/news/'
 
     # Retrieve page with the requests module
@@ -49,30 +45,7 @@ def scrape():
     soup = BeautifulSoup(response.text, 'html.parser')
     mars_mission["news"] = soup.find('div', class_="content_title").text.strip()
     mars_mission["news_description"] = soup.find('div', class_="image_and_description_container").text.strip()
-
-
-
-
-    with Browser() as browser:
-    # Visit URL
-        url = "https://www.jpl.nasa.gov/spaceimages/?search=&category=Mars/"
-        browser.visit(url)
-        time.sleep(3)
-        
-        html = browser.html
-        
-        button = browser.find_by_id('full_image')
-        button.click()
-        time.sleep(3)
-        
-        html = browser.html
-        time.sleep(3)
-        soup = BeautifulSoup(html, "html.parser")
     
-    a_ = soup.find('img', class_='fancybox-image')['src']
-    x_ = 'https://www.jpl.nasa.gov'
-    p_ = x_+a_
-    mars_mission["featured_image"] = p_
 
 
 
